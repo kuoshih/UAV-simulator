@@ -1,6 +1,7 @@
 # UAV-simulator
 
-![alt text](https://github.com/kuoshih/UAV-simulator/blob/master/documents/gazebo.png)  
+![alt text](https://github.com/kuoshih/UAV-simulator/blob/main/documents/gazebo.png)  
+
 
 ## Abstract
 This code is for MA3137 Special Topics in Robotics.
