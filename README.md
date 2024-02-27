@@ -11,7 +11,7 @@ Main node publish the topics -- mavros/setpoint_position/local.
 
 ## Virtual box image file
 1. Install virtual box: https://www.virtualbox.org/ (or Google：Virtualbox)  
-2. Download the image file: To be uploaded.  
+2. Download the image file: https://drive.google.com/file/d/1qFrtBpMbufIv_EWJFTQMAEwfulgCMK3J/view?usp=sharing  
 3. import the OVA file (see https://www.youtube.com/watch?v=7GbPbaMwlKw)  
 account: hypharos  
 pw: hypharos  
