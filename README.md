@@ -12,7 +12,8 @@ Main node publish the topics -- mavros/setpoint_position/local.
 ## Virtual box image file
 1. Install virtual box: https://www.virtualbox.org/ (or Google：Virtualbox)  
 2. Download the image file: To be uploaded.  
-
+account: hypharos  
+pw: hypharos  
 ## About us
 
 Developer:   
@@ -45,3 +46,7 @@ $ rosrun UAV main
 ## Edit code  
 You can edit src/main.cpp for your project.
 
+## FAQ  
+1. Network error of the virtualbox?   
+Since your network hardware is different, you have to set the etherent and wirless hardware.   
+![alt text](https://github.com/kuoshih/UAV-simulator/blob/main/documents/network_error.png)  
