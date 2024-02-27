@@ -10,7 +10,8 @@ This code activate a node "main" and the other sensor nodes.
 Main node publish the topics -- mavros/setpoint_position/local. 
 
 ## Virtual box image file
-To be uploaded.
+1. Install virtual box: https://www.virtualbox.org/ (or Google：Virtualbox)  
+2. Download the image file: To be uploaded.  
 
 ## About us
 
