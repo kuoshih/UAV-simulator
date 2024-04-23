@@ -54,6 +54,7 @@ Once you successfully open Gazebo and a drone is loaded, you can run the sample 
 ``` 
 $ rosrun UAV main  
 ```
+If there's error about FCU, just restart the whole VM and it should work. (Very important)
 
 ## Edit code  
 You can edit src/main.cpp for your project.
