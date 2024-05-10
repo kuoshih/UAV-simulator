@@ -10,13 +10,40 @@
 #include <mavros_msgs/CommandTOL.h>
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/State.h>
-
+#include <sensor_msgs/Image.h>
+#include <cstring>
 #define FLIGHT_ALTITUDE 1.5f
 
 mavros_msgs::State current_state;
 void state_cb(const mavros_msgs::State::ConstPtr& msg){
     current_state = *msg;
 }
+
+void depthImageCallback(const sensor_msgs::Image::ConstPtr& msg)
+{
+    // 計算影像的中心像素位置
+    int centerX = msg->width / 2;
+    int centerY = msg->height / 2;
+
+    // 計算中心像素在資料中的索引
+    int index = (centerY * msg->width) + centerX;
+
+    // 檢查索引是否在有效範圍內
+    if (index >= 0 && index < msg->width * msg->height)
+    {
+        // 使用memcpy從影像資料中提取深度值
+        float depth1;
+        memcpy(&depth1, &msg->data[index * sizeof(float)], sizeof(float));
+        
+        // 在這裡你可以對深度值進行任何需要的處理
+        ROS_INFO("Depth at center pixel: %f", depth1);
+    }
+    else
+    {
+        ROS_WARN("Center pixel index out of bounds.");
+    }
+}
+
 
 int main(int argc, char **argv)
 {
@@ -25,6 +52,8 @@ int main(int argc, char **argv)
 
     ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>
             ("mavros/state", 10, state_cb);
+    ros::Subscriber sub = nh.subscribe("/camera/depth/image_raw", 1, depthImageCallback);
+
     ros::Publisher local_pos_pub = nh.advertise<geometry_msgs::PoseStamped>
             ("mavros/setpoint_position/local", 10);
     ros::ServiceClient arming_client = nh.serviceClient<mavros_msgs::CommandBool>
