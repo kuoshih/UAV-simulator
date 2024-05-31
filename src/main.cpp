@@ -15,6 +15,17 @@
 #define FLIGHT_ALTITUDE 1.5f
 
 mavros_msgs::State current_state;
+void callback1(const ros::TimerEvent&);
+int counter;
+
+void callback1(const ros::TimerEvent&)
+{// Timer callback. Write Q-learning code here 
+   
+    ROS_INFO("Timer tick=%d",counter);
+    counter++;
+  
+}
+
 void state_cb(const mavros_msgs::State::ConstPtr& msg){
     current_state = *msg;
 }
@@ -50,6 +61,8 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "offb_node");
     ros::NodeHandle nh;
 
+   // create a timer callback
+    ros::Timer timer1 = nh.createTimer(ros::Duration(0.1), callback1);
     ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>
             ("mavros/state", 10, state_cb);
     ros::Subscriber sub = nh.subscribe("/camera/depth/image_raw", 1, depthImageCallback);
